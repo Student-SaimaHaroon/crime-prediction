@@ -1,62 +1,128 @@
-# Base44 Project
+# 🚨 Crime Prediction & Complaint Management System
 
-Use this repository to run and edit the app locally, then publish changes back through Base44.
+An AI-powered crime prediction and complaint management system designed to help authorities analyze crime patterns, assess risk levels, and respond to high-risk complaints more efficiently.
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+## 🌐 Live Demo
 
-## Prerequisites
+🔗 **Live Website:** [Add your deployed website link here]
 
-1. Clone the repository using the project's Git URL.
-2. Navigate to the project directory.
-3. Install dependencies: `npm install`.
-4. Install the Base44 CLI: `npm install -g base44@latest`.
-5. Install [Deno](https://docs.deno.com/runtime/getting_started/installation/) — the local Base44 backend runs on it.
+---
 
-Run `base44 --help` (or see the [CLI reference](https://docs.base44.com/developers/references/cli/commands/introduction)) for the full command surface.
+## 📌 About The Project
 
-## Run Locally
+The Crime Prediction & Complaint Management System is a smart web-based platform that combines complaint management, location-based crime analysis, and AI-assisted risk prediction.
 
-Three commands, from the project root:
+The system analyzes complaint-related information such as location, time, and historical crime patterns to generate a risk score. High-risk complaints can be highlighted on the police dashboard to support faster response and better decision-making.
 
-```bash
-base44 login   # one-time per machine
-base44 link    # one-time per clone
-base44 dev     # local backend + frontend together
-```
+---
 
-Open the frontend URL that `base44 dev` prints (typically `http://localhost:5173`).
+## ✨ Key Features
 
-Notes:
+- 📝 **Online Crime Complaint Registration**
+- 🤖 **AI-Based Crime Risk Prediction**
+- 📊 **Crime Analytics Dashboard**
+- 🚨 **High-Risk Complaint Alerts**
+- 📍 **Location-Based Crime Analysis**
+- 👮 **Police Dashboard**
+- 🔔 **Real-Time Alert Updates**
+- 🔐 **User Authentication**
+- 📱 **Responsive Web Interface**
 
-- **Every fresh clone needs `base44 link`.** It writes `base44/.app.jsonc` (the app-id pointer), which is deliberately gitignored. Your app id is in the Builder URL (`app.base44.com/apps/<id>/...`); `base44 link --help` shows the non-interactive flags.
-- **`base44 dev` runs the frontend for you** (via `site.serveCommand` in this repo's `base44/config.jsonc`) — never run `npm run dev` yourself: alone it serves a UI with no backend behind it (`[base44] Proxy not enabled`, every `/api` call fails), and alongside `base44 dev` the second Vite silently takes the next port and you end up looking at the wrong one.
-- **The app must be published at least once for the UI to load under `base44 dev`.** The frontend boots by fetching app settings from the hosted app; before the first publish that fails and every page redirects to login. The local API works regardless.
-- Entities, functions, and auth run locally — entity data is **in-memory only**, wiped when `base44 dev` restarts. Everything else (Core integrations, OAuth login) is forwarded to your deployed app. Full breakdown: [Local development overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview).
+---
 
-## Frontend Only, Hosted Backend
+## 🤖 AI-Based Risk Prediction
 
-To work on just the frontend against your app's live hosted backend:
+The system analyzes complaint information and crime-related patterns to estimate the risk level of a reported incident.
 
-```bash
-base44 dev --remote
-```
+The prediction process considers factors such as:
 
-⚠️ In this mode writes go to your app's **production data** — plain `base44 dev` keeps everything local.
+- 📍 Location
+- 🕒 Time
+- 📊 Historical crime patterns
+- 📝 Complaint information
 
-## Publish Your Changes
+Based on the analysis, the system can classify complaints according to their risk level and highlight high-risk cases for further attention.
 
-After pushing your changes to git, open the Base44 dashboard and publish the app:
+---
 
-```bash
-base44 dashboard open
-```
+## 🚨 Real-Time Police Alerts
 
-This repo syncs to Base44 through git, so publish from the dashboard rather than `base44 deploy` — a CLI deploy ships your local tree directly, bypassing the sync, and the deployed state silently diverges from the repo.
+When a complaint is identified as high-risk, the information can be displayed on the police dashboard for faster awareness and response.
 
-## Docs & Support
+The system is designed to support real-time communication between the complaint system and the police dashboard.
 
-GitHub integration: [https://docs.base44.com/developers/app-code/local-development/github](https://docs.base44.com/developers/app-code/local-development/github)
+---
 
-Local development: [https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview](https://docs.base44.com/developers/backend/overview/local-dev/local-development-overview)
+## 📊 Crime Analytics
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+The dashboard provides a visual overview of crime-related information to help identify:
+
+- Crime-prone locations
+- Crime frequency
+- Risk levels
+- Complaint trends
+- High-risk areas
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- Tailwind CSS
+
+### Backend
+- Node.js
+- REST APIs
+
+### Database
+- PostgreSQL
+- PostGIS
+
+### AI / Prediction
+- Python
+- Machine Learning
+
+### Real-Time Communication
+- WebSockets / Socket.IO
+
+### Development & Deployment
+- Base44
+- Git
+- GitHub
+
+---
+
+## 🏗️ System Architecture
+
+```text
+                ┌─────────────────────┐
+                │      User           │
+                │  Complaint Portal   │
+                └──────────┬──────────┘
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │    React Frontend   │
+                └──────────┬──────────┘
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │    Node.js API      │
+                └───────┬─────┬───────┘
+                        │     │
+             ┌──────────┘     └──────────┐
+             ▼                           ▼
+    ┌─────────────────┐         ┌─────────────────┐
+    │ PostgreSQL +    │         │ AI/ML Prediction│
+    │    PostGIS      │         │     Engine      │
+    └─────────────────┘         └────────┬────────┘
+                                         │
+                                         ▼
+                              ┌─────────────────────┐
+                              │   Police Dashboard  │
+                              │   & Risk Alerts     │
+                              └─────────────────────┘
